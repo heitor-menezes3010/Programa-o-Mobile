@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Parcelas</title>
+</head>
+<body>
+
+    <h2>Cálculo de Pagamento</h2>
+    
+    <label>Preço à Vista:</label><br>
+    <input type="number" id="valorEntrada" placeholder="R$ 0.00">
+    <br><br>
+
+    <label>Número de Parcelas:</label><br>
+    <select id="escolhaParcelas">
+        <option value="1">1 parcela (À vista)</option>
+        <option value="3">3 parcelas (10% acréscimo)</option>
+        <option value="5">5 parcelas (20% acréscimo)</option>
+    </select>
+    <br><br>
+
+    <button onclick="calcularEMostrarNoConsole()">Calcular</button>
+
+    <p><em>Abra o Console (F12) para ver o resultado conforme a imagem.</em></p>
+
+    <script src="Funcao.js"></script>
+</body>
+</html>
