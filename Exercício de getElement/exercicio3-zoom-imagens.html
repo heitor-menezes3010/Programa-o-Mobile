@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Exercício 3 - Zoom em Imagens</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .pequena { width: 50px; height: 50px; }
+  .media   { width: 100px; height: 100px; }
+  .grande  { width: 150px; height: 150px; }
+
+  .lupa { width: 32px; height: 32px; cursor: pointer; margin-right: 15px; }
+  #controles { margin-bottom: 20px; }
+  .galeria img { margin: 5px; border: 1px solid #ccc; }
+</style>
+</head>
+<body>
+
+<h2>Galeria com Zoom</h2>
+
+<div id="controles">
+  <img id="zoomIn" class="lupa" src="https://cdn-icons-png.flaticon.com/512/482/482631.png" title="Zoom In (+)">
+  <img id="zoomOut" class="lupa" src="https://cdn-icons-png.flaticon.com/512/482/482632.png" title="Zoom Out (-)">
+</div>
+
+<div class="galeria">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/1/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/2/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/3/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/4/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/5/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/6/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/7/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/8/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/9/200">
+  <img class="imagemGaleria media" src="https://picsum.photos/id/10/200">
+</div>
+
+<script>
+var tamanhos = ["pequena", "media", "grande"];
+
+function alterarZoom(direcao) {
+  var imagens = document.getElementsByClassName("imagemGaleria");
+
+  for (var i = 0; i < imagens.length; i++) {
+    var img = imagens[i];
+    var indiceAtual = -1;
+
+    for (var t = 0; t < tamanhos.length; t++) {
+      if (img.classList.contains(tamanhos[t])) {
+        indiceAtual = t;
+        break;
+      }
+    }
+
+    var novoIndice = indiceAtual + direcao;
+
+    if (novoIndice >= 0 && novoIndice < tamanhos.length) {
+      img.classList.remove(tamanhos[indiceAtual]);
+      img.classList.add(tamanhos[novoIndice]);
+    }
+  }
+}
+
+document.getElementById("zoomIn").onclick = function() {
+  alterarZoom(1);
+};
+
+document.getElementById("zoomOut").onclick = function() {
+  alterarZoom(-1);
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Exercício 2 - Lista de Compras</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .campo { display: block; margin-bottom: 6px; }
+  button { margin-top: 10px; padding: 6px 14px; }
+</style>
+</head>
+<body>
+
+<h2>Lista de Compras</h2>
+<form id="formCompras">
+  <input type="text" class="itemCompra" placeholder="Item 1">
+  <input type="text" class="itemCompra" placeholder="Item 2">
+  <input type="text" class="itemCompra" placeholder="Item 3">
+  <input type="text" class="itemCompra" placeholder="Item 4">
+  <input type="text" class="itemCompra" placeholder="Item 5">
+  <input type="text" class="itemCompra" placeholder="Item 6">
+  <input type="text" class="itemCompra" placeholder="Item 7">
+  <input type="text" class="itemCompra" placeholder="Item 8">
+  <input type="text" class="itemCompra" placeholder="Item 9">
+  <input type="text" class="itemCompra" placeholder="Item 10">
+  <button type="button" onclick="gerarLista()">Gerar Lista</button>
+</form>
+
+<h3>Itens:</h3>
+<ol id="listaResultado"></ol>
+
+<script>
+function gerarLista() {
+  var campos = document.getElementsByClassName("itemCompra");
+  var lista = document.getElementById("listaResultado");
+
+  lista.innerHTML = "";
+
+  for (var i = 0; i < campos.length; i++) {
+    var valor = campos[i].value.trim();
+    if (valor !== "") {
+      var item = document.createElement("li");
+      item.textContent = valor;
+      lista.appendChild(item);
+    }
+    campos[i].value = "";
+  }
+}
+</script>
+
+</body>
+</html>

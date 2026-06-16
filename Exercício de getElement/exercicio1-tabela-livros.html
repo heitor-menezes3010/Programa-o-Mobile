@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Exercício 1 - Tabela de Livros</title>
+<style>
+  table { border-collapse: collapse; width: 400px; font-family: Arial, sans-serif; }
+  th, td { border: 1px solid #333; padding: 8px; cursor: pointer; text-align: left; }
+  th { background-color: #ddd; }
+</style>
+</head>
+<body>
+
+<h2>Lista de Livros</h2>
+<table id="tabelaLivros">
+  <thead>
+    <tr>
+      <th onclick="pintarColuna(0)">Livro</th>
+      <th onclick="pintarColuna(1)">Páginas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>O Senhor dos Anéis</td><td>1178</td></tr>
+    <tr><td>Dom Quixote</td><td>863</td></tr>
+    <tr><td>1984</td><td>328</td></tr>
+    <tr><td>O Pequeno Príncipe</td><td>96</td></tr>
+    <tr><td>Cem Anos de Solidão</td><td>417</td></tr>
+  </tbody>
+</table>
+
+<script>
+function pintarColuna(indiceColuna) {
+  var tabela = document.getElementById("tabelaLivros");
+  var linhas = tabela.getElementsByTagName("tr");
+
+  // Limpa a cor de todas as células antes de pintar a coluna escolhida
+  for (var i = 0; i < linhas.length; i++) {
+    var celulas = linhas[i].getElementsByTagName("td");
+    for (var j = 0; j < celulas.length; j++) {
+      celulas[j].style.backgroundColor = "";
+    }
+  }
+
+  var cor = (indiceColuna === 0) ? "lightblue" : "lightgreen";
+
+  // Pinta apenas a coluna clicada (ignora o cabeçalho, que não tem <td>)
+  for (var i = 0; i < linhas.length; i++) {
+    var celulas = linhas[i].getElementsByTagName("td");
+    if (celulas[indiceColuna]) {
+      celulas[indiceColuna].style.backgroundColor = cor;
+    }
+  }
+}
+</script>
+
+</body>
+</html>
